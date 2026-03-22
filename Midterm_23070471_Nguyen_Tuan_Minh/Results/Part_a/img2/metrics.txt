@@ -1,0 +1,4 @@
+Mean: PSNR=29.14, SSIM=0.8032
+Gaussian: PSNR=29.72, SSIM=0.8350
+Median: PSNR=28.01, SSIM=0.7443
+Laplacian: PSNR=9.90, SSIM=0.0817
