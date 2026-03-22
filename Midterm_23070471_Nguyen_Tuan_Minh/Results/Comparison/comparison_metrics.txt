@@ -1,0 +1,21 @@
+=== SIFT vs ORB COMPARISON ===
+
+Pair 1-2:
+  SIFT → Matches: 1467, Inliers: 1459, Ratio: 0.99
+  ORB  → Matches: 1014, Inliers: 998, Ratio: 0.98
+
+Pair 2-3:
+  SIFT → Matches: 1667, Inliers: 1655, Ratio: 0.99
+  ORB  → Matches: 2091, Inliers: 2080, Ratio: 0.99
+
+Pair 3-4:
+  SIFT → Matches: 1625, Inliers: 1619, Ratio: 1.00
+  ORB  → Matches: 864, Inliers: 845, Ratio: 0.98
+
+=== TIMING ===
+SIFT Detection: 1.132s
+ORB Detection: 0.114s
+SIFT Matching: 2.542s
+ORB Matching: 1.592s
+SIFT Total: 5.337s
+ORB Total: 1.717s
