@@ -195,15 +195,16 @@ In summary, the Mean and Gaussian filters are effective for noise reduction, wit
 
 The following table summarizes the estimated PSNR values from the chart:
 
-\begin{table}[H]
+\begin{table}[h]
 \centering
-\begin{tabular}{|l|c|l|}
+\footnotesize
+\begin{tabular}{|l|c|p{6cm}|}
 \hline
 \textbf{Filter} & \textbf{PSNR (dB)} & \textbf{Performance Evaluation} \\ \hline
-Gaussian & $\sim$29.72 & Highest: Best noise reduction performance among tested filters. \\ \hline
-Mean & $\sim$29.14 & Good: Stable noise reduction, slightly lower than Gaussian. \\ \hline
-Median & $\sim$28.00 & Average: Acceptable performance but not optimal for this type of noise. \\ \hline
-Laplacian & $\sim$10.00 & Very poor: Unable to reduce noise (extremely low PSNR). \\ \hline
+Gaussian & $\sim$29.72 & Best noise reduction performance. \\ \hline
+Mean & $\sim$29.14 & Good and stable, slightly lower than Gaussian. \\ \hline
+Median & $\sim$28.00 & Acceptable but not optimal for this noise. \\ \hline
+Laplacian & $\sim$10.00 & Very poor, cannot reduce noise. \\ \hline
 \end{tabular}
 \caption{Summary of estimated PSNR values for different filters.}
 \label{tab:psnr_summary}
@@ -559,10 +560,29 @@ The comparison between SIFT and ORB highlights the trade-off between accuracy an
     \item ORB is a better choice for real-time systems or mobile devices thanks to its significantly faster processing speed.
 \end{itemize}
 
-\section{References}
-[Your references here]
 
-\textit{List all sources (e.g., OpenCV documentation, textbooks) in a consistent format. Use \texttt{url} for online resources and ensure all citations are relevant and properly formatted.}
+\begin{thebibliography}{9}
+
+\bibitem{mean}
+Jebur, R. S. (2023). Image denoising using mean filter. 
+\textit{Al-Salam Journal for Engineering and Technology}, 2(2), 173--181.
+
+\bibitem{gaussian}
+Setyawan, G. C., \& Nawansari, M. P. (2022). 
+Gaussian and median screening performance in image softening. 
+\textit{Journal of Information Technology}.
+
+\bibitem{median}
+Arias-Castro, E., \& Donoho, D. L. (2006). 
+Does median filtering truly preserve edges better than linear filtering? 
+\textit{arXiv preprint arXiv:math/0612422}.
+
+\bibitem{laplacian}
+Gong, Y., Tang, W., Zhou, L., Yu, L., \& Qiu, G. (2021). 
+Quarter Laplacian filter for edge aware image processing. 
+\textit{arXiv preprint arXiv:2101.07933}.
+
+\end{thebibliography}
 
 \appendix
 \section{Appendix: Python Code}
