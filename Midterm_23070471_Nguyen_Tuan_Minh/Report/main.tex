@@ -212,7 +212,7 @@ Laplacian & $\sim$10.00 & Very poor, cannot reduce noise. \\ \hline
 
 {Qualitative Analysis (Based on Image Results)}
 
-Based on visual inspection of the resulting images (Figure~\ref{fig:filters_gaussian}), the following observations can be made:
+Based on visual inspection of the resulting table 1 the following observations can be made:
 
 \begin{itemize}
     \item \textbf{Gaussian Filter:}
@@ -280,15 +280,6 @@ The Panorama stitching workflow is implemented through several technical stages:
 
 \vspace{2mm}
 
-\textbf{ Algorithm Evaluation: SIFT vs ORB}
-
-The choice of feature detection algorithm results in a clear trade-off:
-
-\begin{itemize}
-    \item \textbf{SIFT (Quality):} Provides very high accuracy and the largest number of inliers. However, it has a high computational cost and longer processing time (approximately 5.34 seconds).
-    
-    \item \textbf{ORB (Speed):} A time-efficient alternative (approximately 1.72 seconds), about 3 times faster than SIFT. ORB is suitable for real-time applications requiring fast response, although the number of correct matches may be lower than SIFT under certain conditions.
-\end{itemize}
 \subsubsection{Summary}
 In summary, the Mean and Gaussian filters are effective for noise reduction, with Gaussian providing better detail preservation. The Median filter is suitable for impulse noise, while the Laplacian filter is primarily used for edge enhancement rather than denoising.
 \subsubsection{Discussion}
@@ -305,7 +296,23 @@ Recovering three-dimensional (3D) spatial structure from two-dimensional (2D) im
 By identifying corresponding points between the left and right images, the system computes the disparity, which represents the horizontal shift of each pixel between the two views. This disparity is inversely related to depth, allowing the estimation of distance for every visible point in the scene. As a result, a dense depth map can be generated, where each pixel encodes its relative depth information.
 
 Using this depth information, the scene can be reconstructed in three dimensions as a point cloud, providing a more complete representation of the environment. This approach forms the foundation for many real-world applications, including robotics, autonomous driving, augmented and virtual reality, and 3D scene understanding, where accurate perception of spatial structure is essential.
+\begin{figure}[H]
+    \centering
 
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{right.jpg}
+        \caption{RIGHT}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{left.jpg}
+        \caption{LEFT}
+    \end{subfigure}
+
+    \caption{Sample Data}
+\end{figure}
 
 \subsection{Implementation and Results}
 
@@ -356,6 +363,12 @@ The process is divided into five main stages, from input image processing to gen
         \item \textbf{Compute Z:} Use the inverse proportionality formula $Z = \frac{f \cdot B}{d}$. In the code, this value is scaled by the \texttt{DEPTH\_SCALE} parameter.
         \item \textbf{Create Cloud:} Combine 2D coordinates $(u, v)$ with depth $Z$ to generate a list of 3D points.
         \item \textbf{Color Assignment:} Each 3D point is assigned a color from the original image to enhance realism.
+        \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.\textwidth]{download.png}
+    \caption{3D Point Cloud }
+    \label{fig:my_image}
+\end{figure}
     \end{itemize}
 
     \item \textbf{Result Export and Visualization}
@@ -386,6 +399,12 @@ The differences between the two methods are clearly reflected in the obtained di
 
 \section{Part C: Image Stitching}
 To stitch a panorama from multiple viewpoints, distinctive invariant features must be detected, described comprehensively, and accurately matched across overlapping image regions. From these corresponding feature pairs, a geometric transformation matrix can be estimated, which serves as the basis for aligning and stitching the images into a complete panoramic view.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{ori.png}
+    \caption{Original slice Images}
+    \label{fig:my_image}
+\end{figure}
 
 \subsection{Methodology}
 
@@ -402,7 +421,23 @@ The process of stitching individual images into a panoramic image consists of th
 
     \item \textbf{Warping and Blending:} The homography matrix $H$ is applied to warp one image into the coordinate system of the other. Overlapping regions are then blended (e.g., intensity averaging) to reduce visible seams.
 \end{enumerate}
+\begin{figure}[H]
+    \centering
 
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{sift.png}
+        \caption{Sample Sift}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{orb.png}
+        \caption{Sample ORB}
+    \end{subfigure}
+
+    \caption{Sample Sift and ORB matches}
+\end{figure}
 \textbf{Perspective Transformation (Homography)}
 
 To map a point $(x, y)$ from the source image to $(x', y')$ in the destination panorama plane, a $3 \times 3$ homography matrix $H$ is used:
@@ -481,7 +516,23 @@ Panorama Quality & Smooth with fewer geometric distortions & Good, but may strug
 \subsection{Comparative Analysis}
 
 The following data were collected from experimental results using a sequence of four input images:
+\begin{figure}[H]
+    \centering
 
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pa1.png}
+        \caption{Sift Panorama}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pa2.png}
+        \caption{Orb Panorama}
+    \end{subfigure}
+
+    \caption{Final results Sift and ORB Panorama}
+\end{figure}
 \begin{table}[h]
 \centering
 \small
